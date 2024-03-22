@@ -39,6 +39,8 @@ export const ThemeSwitcher = () => {
             <ContextMenuTrigger
                 className={cn('size-6')}
                 onClick={() => setTheme(nextTheme(theme!)!)}
+                role='button'
+                data-testid='theme-switcher'
             >
                 <IconContext.Provider
                     value={{

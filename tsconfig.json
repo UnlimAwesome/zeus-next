@@ -24,7 +24,8 @@
             "@/entities/*": ["./src/front/entities/*"],
             "@/pages/*": ["./src/front/pages/*"],
             "@/*": ["./src/*"]
-        }
+        },
+        "types": ["@testing-library/jest-dom"]
     },
     "include": [
         "next-env.d.ts",

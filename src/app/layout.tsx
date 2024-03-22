@@ -16,11 +16,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ru">
+        <html lang='ru'>
             <body className={inter.className}>
                 <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
+                    attribute='class'
+                    defaultTheme='system'
                     enableSystem
                     enableColorScheme
                     disableTransitionOnChange
