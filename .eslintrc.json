@@ -38,5 +38,5 @@
         "quotes": ["warn", "single"],
         "semi": ["error", "always"]
     },
-    "ignorePatterns": ["src/front/shared/components/ui"]
+    "ignorePatterns": ["../../src/front/shared/components/ui"]
 }

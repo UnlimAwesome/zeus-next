@@ -5,14 +5,18 @@ import {
     ContextMenuItem,
     ContextMenuTrigger,
 } from '@/components/ui/context-menu';
-import { cn } from '@/front/shared/lib/utils';
 import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { IoCloudyNightOutline } from 'react-icons/io5';
 import { LuMoonStar, LuSun } from 'react-icons/lu';
 
-export const ThemeSwitcher = () => {
+interface IThemeSwithcher {
+    className?: string;
+}
+export const ThemeToggle = (props: IThemeSwithcher) => {
+    const { className } = props;
+
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
 
@@ -37,15 +41,16 @@ export const ThemeSwitcher = () => {
     return (
         <ContextMenu>
             <ContextMenuTrigger
-                className={cn('size-6')}
+                className={className}
                 onClick={() => setTheme(nextTheme(theme!)!)}
                 role='button'
                 data-testid='theme-switcher'
             >
                 <IconContext.Provider
                     value={{
-                        size: '100%',
-                        className: 'hover:scale-110 transition',
+                        // size: 'inherit',
+                        className:
+                            'hover:scale-110 transition size-6 self-center  stroke-white',
                     }}
                 >
                     <LuSun
@@ -59,7 +64,7 @@ export const ThemeSwitcher = () => {
                     />
                 </IconContext.Provider>
             </ContextMenuTrigger>
-            <ContextMenuContent>
+            <ContextMenuContent className='font-bold'>
                 <ContextMenuItem onClick={() => setTheme('light')}>
                     Светлая
                 </ContextMenuItem>

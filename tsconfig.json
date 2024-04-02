@@ -17,12 +17,14 @@
                 "name": "next"
             }
         ],
+        "baseUrl": ".",
         "paths": {
             "@/components/*": ["./src/front/shared/components/*"],
             "@/features/*": ["./src/front/features/*"],
             "@/widgets/*": ["./src/front/widgets/*"],
             "@/entities/*": ["./src/front/entities/*"],
             "@/pages/*": ["./src/front/pages/*"],
+            "@/utils": ["./src/front/shared/lib/utils"],
             "@/*": ["./src/*"]
         },
         "types": ["@testing-library/jest-dom"]
@@ -32,7 +34,8 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "config/jest/jest.config.ts"
+        ".config/jest/jest.config.ts",
+        ".config/playwright/playwright.config.ts"
     ],
     "exclude": ["node_modules"]
 }
