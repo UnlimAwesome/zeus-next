@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Inter } from 'next/font/google';
 import './styles/globals.css';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,37 +31,35 @@ export default function RootLayout({
                     enableColorScheme
                     disableTransitionOnChange
                 >
-                    <Header className='h-[var(--header-height)] bg-black filter-none' />
-                    <ScrollArea className='h-[calc(100svh-var(--header-height))] overflow-auto'>
-                        <main
-                            className='bg-fill w-full'
-                            style={{
-                                backgroundImage:
-                                    'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
-                                    'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
-                                    'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
-                                    'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
-                                    'linear-gradient(to bottom, #e7d3a5 0%, #d6ae9c 10%, #b5b2b5 100%)',
-                                backgroundSize:
-                                    `${circleSize}px ${circleSize}px,` +
-                                    `${circleSize}px ${circleSize}px,` +
-                                    `${circleSize}px ${circleSize}px,` +
-                                    `${circleSize}px ${circleSize}px,` +
-                                    '100% 100%',
-                                backgroundPosition:
-                                    `${(circleSize / 2) * 1.5}px ${circleSize / 2}px,` +
-                                    `${(circleSize / 2) * -1.5}px ${circleSize / 2}px,` +
-                                    `${circleSize}px ${circleSize}px,` +
-                                    `${1.5 * circleSize}px ${circleSize}px,` +
-                                    '0 0',
-                                backgroundRepeat: 'repeat',
-                                backgroundAttachment: 'scroll',
-                            }}
-                        >
-                            {children}
-                        </main>
-                        <footer className='h-36 w-full bg-black'></footer>
-                    </ScrollArea>
+                    <Header className='fixed z-50 h-[var(--header-height)] bg-black filter-none' />
+                    <main
+                        className='w-full pt-[var(--header-height)] dark:brightness-50'
+                        style={{
+                            backgroundImage:
+                                'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
+                                'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
+                                'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
+                                'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
+                                'linear-gradient(to bottom, #FDE382 0%, #EC9C77 25%, #887B73 75%, #5F5D5D 100%)',
+                            backgroundSize:
+                                `${circleSize}px ${circleSize}px,` +
+                                `${circleSize}px ${circleSize}px,` +
+                                `${circleSize}px ${circleSize}px,` +
+                                `${circleSize}px ${circleSize}px,` +
+                                '100% 100%',
+                            backgroundPosition:
+                                `${(circleSize / 2) * 1.5}px ${circleSize / 2}px,` +
+                                `${(circleSize / 2) * -1.5}px ${circleSize / 2}px,` +
+                                `${circleSize}px ${circleSize}px,` +
+                                `${1.5 * circleSize}px ${circleSize}px,` +
+                                '0 0',
+                            backgroundRepeat: 'repeat',
+                            backgroundAttachment: 'scroll',
+                        }}
+                    >
+                        {children}
+                    </main>
+                    <footer className='h-36 w-full bg-black'></footer>
                 </ThemeProvider>
             </body>
         </html>

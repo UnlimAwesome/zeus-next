@@ -34,9 +34,14 @@
 
         --radius: 0.5rem;
 
-        --header-height: 4rem;
+        /* ////////////////////////////////////////////////  */
         --orange: 20 73% 67%;
-        --brown: 10, 12%, 31%;
+        --brown: hsla(15, 6%, 13%, 0.65);
+
+        --header-height: 4rem;
+        @media screen and (min-width: 768px) {
+            --header-height: 6rem;
+        }
     }
 
     .dark {
