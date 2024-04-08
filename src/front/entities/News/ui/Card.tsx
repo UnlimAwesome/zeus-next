@@ -20,7 +20,7 @@ export const Card = (props: CardProps) => {
     return (
         <CardPrimitive
             className={cn(
-                'overflow-hidden rounded-2xl border-[var(--brown)] bg-[var(--brown)] text-white',
+                'overflow-hidden rounded-2xl border-[var(--dark-opacity)] bg-[var(--dark-opacity)] text-white',
                 className,
                 height,
                 width,

@@ -23,7 +23,7 @@ export const Card = (props: CardProps) => {
     return (
         <CardPrimitive
             className={cn(
-                'overflow-hidden rounded-2xl border-black bg-black text-white',
+                'overflow-hidden rounded-2xl border-[hsl(var(--dark))] bg-[hsl(var(--dark))] text-white',
                 className,
                 height,
                 width,
@@ -37,11 +37,11 @@ export const Card = (props: CardProps) => {
                 height={300}
                 className='h-2/3 w-full object-cover'
             />
-            <CardContent className='h-1/3 sm:max-xl:h-1/2'>
-                <CardTitle className='mt-6 w-full text-center text-2xl font-medium md:text-4xl xl:text-6xl'>
+            <CardContent className='h-1/3 min-h-min sm:max-xl:h-1/2'>
+                <CardTitle className='w-full text-center text-2xl font-medium md:text-4xl xl:text-6xl'>
                     {title}
                 </CardTitle>
-                <CardDescription className='mt-6 w-full text-center text-xl text-white md:text-3xl'>
+                <CardDescription className='w-full text-center text-xl text-white md:text-3xl'>
                     {description}
                 </CardDescription>
             </CardContent>

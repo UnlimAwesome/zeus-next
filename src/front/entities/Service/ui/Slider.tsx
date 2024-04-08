@@ -13,8 +13,8 @@ export const Slider = (props: SliderProps) => {
     return (
         <SliderPrimitive
             className={cn('w-1/2', className, height, width)}
-            dotsClassName='bg-white h-2 w-8 rounded transition-all'
-            activeDotClassName='bg-[hsl(var(--orange))] h-2 w-20'
+            dotsClassName='bg-white h-2 w-8 rounded-full transition-all border-[1px] border-[hsl(var(--dark))] box-content'
+            activeDotClassName='bg-[hsl(var(--contrast))] h-2 w-20 '
             autoplayDelay={6000}
         >
             <ServiceCard

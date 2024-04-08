@@ -14,7 +14,7 @@ export const Slider = (props: SliderProps) => {
         <SliderPrimitive
             className={cn(className, height, width)}
             dotsClassName='bg-white h-2 w-8 rounded transition-all'
-            activeDotClassName='bg-[hsl(var(--orange))] h-2 w-20'
+            activeDotClassName='bg-[hsl(var(--contrast))] h-2 w-20'
             autoplayDelay={6000}
         >
             <NewsCard

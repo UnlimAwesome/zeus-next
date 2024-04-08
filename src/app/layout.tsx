@@ -31,7 +31,7 @@ export default function RootLayout({
                     enableColorScheme
                     disableTransitionOnChange
                 >
-                    <Header className='fixed z-50 h-[var(--header-height)] bg-black filter-none' />
+                    <Header className='fixed z-50 h-[var(--header-height)] bg-[hsl(var(--dark))] filter-none' />
                     <main
                         className='w-full pt-[var(--header-height)] dark:brightness-50'
                         style={{
@@ -40,7 +40,7 @@ export default function RootLayout({
                                 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
                                 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
                                 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 20%, transparent 35%),' +
-                                'linear-gradient(to bottom, #FDE382 0%, #EC9C77 25%, #887B73 75%, #5F5D5D 100%)',
+                                'linear-gradient(to bottom, #64848c 0%, #cdd5d7 25%, #b2c0cd 75%, #64848c 100%)',
                             backgroundSize:
                                 `${circleSize}px ${circleSize}px,` +
                                 `${circleSize}px ${circleSize}px,` +
@@ -59,7 +59,7 @@ export default function RootLayout({
                     >
                         {children}
                     </main>
-                    <footer className='h-36 w-full bg-black'></footer>
+                    <footer className='h-36 w-full bg-[hsl(var(--dark))]'></footer>
                 </ThemeProvider>
             </body>
         </html>
