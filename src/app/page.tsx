@@ -1,3 +1,4 @@
+import { ContactsView } from '@/widgets/ContactsView';
 import { JobsView } from '@/widgets/JobsView';
 import { MainView } from '@/widgets/MainView';
 import { NewsView } from '@/widgets/NewsView';
@@ -10,6 +11,7 @@ export default function Home() {
             <NewsView />
             <JobsView />
             <ReviewsView />
+            <ContactsView />
         </>
     );
 }

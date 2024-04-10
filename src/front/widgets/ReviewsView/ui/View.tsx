@@ -1,4 +1,3 @@
-import { SectionHeader } from '@/components/SectionHeader';
 import { ReviewSlider } from '@/entities/Review';
 import { cn } from '@/front/shared/lib/utils';
 import { HTMLAttributes } from 'react';
@@ -17,7 +16,7 @@ export const View = (props: ViewProps) => {
             )}
             {...otherProps}
         >
-            <div className={cn('size-full px-[5%] py-10')}>
+            <div className={cn('size-full px-[5%] pb-20 pt-20 xl:pt-0')}>
                 <ReviewSlider
                     className='size-full'
                     height='h-full'
