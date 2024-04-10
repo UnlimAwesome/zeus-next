@@ -27,7 +27,7 @@ export const View = (props: ViewProps) => {
                 )}
             >
                 <NewsSlider
-                    className='h-4/5 w-full shrink grow-0 md:w-[45%] md:basis-1/2'
+                    className='-mr-4 h-4/5 w-full shrink grow-0 md:w-[45%] md:basis-1/2'
                     height='xl:h-full'
                 ></NewsSlider>
                 <Separator

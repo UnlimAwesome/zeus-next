@@ -1,33 +1,41 @@
 'use client';
 import {
-    Carousel as CarouselComponent,
     CarouselApi,
+    Carousel as CarouselComponent,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
+    CarouselProps,
 } from '@/components/ui/carousel';
 import { cn } from '@/front/shared/lib/utils';
+import { ClassValue } from 'clsx';
 import Autoplay from 'embla-carousel-autoplay';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
-interface SwiperProps {
+interface SwiperProps extends CarouselProps {
     className?: string;
     dotsClassName?: string;
     activeDotClassName?: string;
     autoplayDelay?: number;
     navigation?: boolean;
     children: ReactNode[];
+    height?: ClassValue;
+    carouselItemClassName?: ClassValue;
+    gap?: number;
 }
 
 export const Carousel = (props: SwiperProps) => {
     const {
         className,
+        height,
         children,
         dotsClassName,
         activeDotClassName,
+        carouselItemClassName,
         autoplayDelay,
         navigation,
+        gap,
         ...otherProps
     } = props;
 
@@ -42,10 +50,14 @@ export const Carousel = (props: SwiperProps) => {
         if (!api) return;
 
         setCurrentSlide(api.selectedScrollSnap());
+        setCountSlides(api.scrollSnapList().length);
         api.on('select', () => {
             setCurrentSlide(api.selectedScrollSnap());
         });
-        setCountSlides(api.scrollSnapList().length);
+        api.on('resize', () => {
+            setCurrentSlide(api.selectedScrollSnap());
+            setCountSlides(api.scrollSnapList().length);
+        });
     }, [api]);
 
     return (
@@ -53,16 +65,21 @@ export const Carousel = (props: SwiperProps) => {
             setApi={setApi}
             plugins={autoplayDelay ? [autoplay.current] : []}
             className={cn(className)}
-            onMouseEnter={autoplay.current.stop}
-            onMouseLeave={autoplay.current.play}
+            onMouseEnter={autoplayDelay ? autoplay.current.stop : undefined}
+            onMouseLeave={autoplayDelay ? autoplay.current.play : undefined}
             opts={{ slidesToScroll: 1, align: 'start' }}
             {...otherProps}
         >
-            <CarouselContent className='size-full'>
+            <CarouselContent className={cn('size-full', `md:-ml-[${gap}px]`)}>
                 {children.map((child, index) => (
                     <CarouselItem
                         key={index}
-                        className='select-none'
+                        className={cn(
+                            'select-none',
+                            carouselItemClassName,
+                            height,
+                            `md:pl-[${gap}px]`,
+                        )}
                     >
                         {child}
                     </CarouselItem>

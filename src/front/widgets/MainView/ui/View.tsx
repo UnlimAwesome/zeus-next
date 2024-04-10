@@ -26,7 +26,7 @@ export const View = (props: ViewProps) => {
             </div>
 
             <ServiceSlider
-                className={cn('w-full shrink basis-3/5', 'md:w-3/5')}
+                className={cn('h-full w-full shrink basis-3/5', 'md:w-3/5')}
                 height='h-full'
             />
         </section>

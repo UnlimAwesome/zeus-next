@@ -1,6 +1,7 @@
 import { JobsView } from '@/widgets/JobsView';
 import { MainView } from '@/widgets/MainView';
 import { NewsView } from '@/widgets/NewsView';
+import { ReviewsView } from '@/widgets/ReviewsView';
 
 export default function Home() {
     return (
@@ -8,6 +9,7 @@ export default function Home() {
             <MainView />
             <NewsView />
             <JobsView />
+            <ReviewsView />
         </>
     );
 }

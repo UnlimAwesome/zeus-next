@@ -14,7 +14,7 @@ type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
 
-type CarouselProps = {
+export type CarouselProps = {
     opts?: CarouselOptions;
     plugins?: CarouselPlugin;
     orientation?: 'horizontal' | 'vertical';
@@ -160,13 +160,13 @@ const CarouselContent = React.forwardRef<
     return (
         <div
             ref={carouselRef}
-            className='size-full overflow-hidden'
+            className='h-full overflow-hidden'
         >
             <div
                 ref={ref}
                 className={cn(
                     'flex',
-                    // orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
+                    orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
                     className,
                 )}
                 {...props}
@@ -189,9 +189,7 @@ const CarouselItem = React.forwardRef<
             aria-roledescription='slide'
             className={cn(
                 'min-w-0 shrink-0 grow-0 basis-full',
-                orientation === 'horizontal'
-                    ? 'mr-4 last:ml-4 last:mr-0'
-                    : 'mr-4 last:ml-4 last:mr-0',
+                orientation === 'horizontal' ? 'pl-4' : 'pt-4',
                 className,
             )}
             {...props}

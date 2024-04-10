@@ -5,6 +5,7 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/front/shared/lib/utils';
+import { ClassValue } from 'clsx';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 
@@ -13,7 +14,7 @@ interface CardProps {
     title: string;
     description: string;
     className?: string;
-    height?: string;
+    height?: ClassValue;
     width?: string;
 }
 
