@@ -21,7 +21,7 @@ export const Card = (props: CardProps) => {
             )}
             {...otherProps}
         >
-            <CardContent className='flex size-full flex-col justify-evenly'>
+            <CardContent className='flex size-full flex-col justify-evenly pt-6'>
                 <div>
                     <CardTitle className='text-3xl text-white'>Адрес</CardTitle>
                     <CardDescription className='text-xl text-white'>

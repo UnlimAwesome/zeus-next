@@ -1,6 +1,5 @@
 import { SectionHeader } from '@/components/SectionHeader';
 import { ContactCard, ContactYandexMap } from '@/entities/Contact';
-import { ReviewSlider } from '@/entities/Review';
 import { cn } from '@/front/shared/lib/utils';
 import { HTMLAttributes } from 'react';
 
@@ -21,11 +20,12 @@ export const View = (props: ViewProps) => {
             <SectionHeader>Связаться с нами</SectionHeader>
             <div
                 className={cn(
-                    'flex min-h-[calc(100svh-2*var(--header-height))] justify-between gap-20 py-10',
+                    'flex min-h-[calc(100svh-2*var(--header-height))] flex-col gap-20 px-[5%] py-10',
+                    ' md:flex-row md:justify-between md:px-0',
                 )}
             >
-                <ContactCard className='basis-1/4 rounded-l-none rounded-r-2xl' />
-                <ContactYandexMap className='basis-3/4 overflow-hidden rounded-l-2xl' />
+                <ContactCard className='basis-1/4 rounded-2xl md:rounded-none md:rounded-l-none md:rounded-r-2xl' />
+                <ContactYandexMap className='min-h-96 overflow-hidden rounded-2xl md:basis-3/4 md:rounded-none md:rounded-l-2xl' />
             </div>
         </section>
     );

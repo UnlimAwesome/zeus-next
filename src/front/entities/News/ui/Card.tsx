@@ -19,6 +19,7 @@ export const Card = (props: CardProps) => {
         <CardPrimitive
             className={cn(
                 'overflow-hidden rounded-2xl border-[var(--dark-opacity)] bg-[var(--dark-opacity)] text-white',
+                className,
             )}
             {...otherProps}
         >

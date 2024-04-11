@@ -14,7 +14,7 @@ export const Slider = (props: SliderProps) => {
         <SliderPrimitive
             opts={{ align: 'center', loop: true }}
             className={cn(className, 'h-full')}
-            dotsClassName='bg-white h-2 w-8 rounded transition-all'
+            dotsClassName='bg-white h-2 w-8 rounded transition-all border-[hsl(var(--dark))] border-[1px]'
             activeDotClassName='bg-[hsl(var(--contrast))] h-2 w-20'
             carouselItemClassName='md:basis-1/3 lg:basis-1/4'
             gap={50}

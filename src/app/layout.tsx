@@ -59,7 +59,11 @@ export default function RootLayout({
                     >
                         {children}
                     </main>
-                    <footer className='h-36 w-full bg-[hsl(var(--dark))]'></footer>
+                    <footer className='flex h-[var(--header-height)] w-full items-center justify-center bg-[hsl(var(--dark))]'>
+                        <p className='text-base text-white'>
+                            © Copyright 2024 ТОПРУС. Все права защищены.
+                        </p>
+                    </footer>
                 </ThemeProvider>
             </body>
         </html>

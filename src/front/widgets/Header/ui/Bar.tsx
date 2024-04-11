@@ -3,6 +3,13 @@ import { Separator } from '@/components/ui/separator';
 import { cn } from '@/front/shared/lib/utils';
 import Link from 'next/link';
 import { HTMLAttributes } from 'react';
+import localFont from 'next/font/local';
+import {} from 'next/font/google';
+
+const headerFont = localFont({
+    src: './eurostyle-normal.woff2',
+    display: 'swap',
+});
 
 interface BarProps extends HTMLAttributes<HTMLElement> {
     className?: string;
@@ -12,14 +19,32 @@ export const Bar = (props: BarProps) => {
     const { className, ...otherProps } = props;
     return (
         <header
-            className={cn('relative flex w-full items-center', className)}
+            className={cn(
+                'relative flex w-full items-center justify-between px-[5%] md:justify-normal',
+                className,
+            )}
             {...otherProps}
         >
-            <ThemeSwitcher className='ml-auto mr-8' />
-            <div className='mr-8 flex h-full flex-col items-end justify-center text-white'>
+            <div className='text-white'>LOGO</div>
+            <div
+                className={cn(
+                    headerFont.className,
+                    'absolute inset-0',
+                    'pointer-events-none ml-auto flex h-full flex-col justify-center xl:justify-end',
+                )}
+            >
+                <p className='text-center align-text-bottom text-5xl font-bold tracking-wider text-white md:text-7xl md:leading-[.75]'>
+                    ТОПРУС
+                </p>
+                <p className='hidden text-center text-2xl text-white xl:block'>
+                    Спасение утопающих - дело рук самих утопающих
+                </p>
+            </div>
+            <ThemeSwitcher className='ml-auto mr-2 md:mr-4' />
+            <div className='flex h-full flex-col items-end justify-center text-white'>
                 <Link
                     href='/'
-                    className='select-none'
+                    className='hidden select-none md:block'
                 >
                     Регистрация
                 </Link>
