@@ -52,7 +52,7 @@ export const DescriptionConnector = (props: DescriptionConnectorProps) => {
                     className,
                 )}
                 style={{
-                    top: start.y,
+                    top: orientation === 'vertical' ? start.y : start.y - 4,
                     left: start.x,
                     animationDuration: `${animationDuration}ms`,
                     animationName:

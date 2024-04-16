@@ -12,7 +12,7 @@ export const Slider = (props: SliderProps) => {
     const { className, height, width, ...otherProps } = props;
     return (
         <SliderPrimitive
-            opts={{ align: 'center', loop: true }}
+            opts={{ align: 'center', loop: false }}
             className={cn(className, 'h-full')}
             dotsClassName='bg-white h-2 w-8 rounded transition-all border-[hsl(var(--dark))] border-[1px]'
             activeDotClassName='bg-[hsl(var(--contrast))] h-2 w-20'

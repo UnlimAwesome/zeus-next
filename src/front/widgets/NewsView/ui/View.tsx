@@ -27,16 +27,16 @@ export const View = (props: ViewProps) => {
                 )}
             >
                 <NewsSlider
-                    className='-mr-4 h-4/5 w-full shrink grow-0 md:w-[45%] md:basis-1/2'
-                    height='xl:h-full'
+                    className='-mr-4 h-4/5 w-full shrink grow-0 md:h-full md:w-[45%] md:basis-1/2'
+                    height='h-full'
                 ></NewsSlider>
                 <Separator
                     orientation='vertical'
                     className='hidden w-1 rounded-full md:block'
                 />
                 <NewsSlider
-                    className='h-4/5 w-full shrink grow-0 md:w-[45%] md:basis-1/2'
-                    height='xl:h-full'
+                    className='h-4/5 w-full shrink grow-0 md:h-full md:w-[45%] md:basis-1/2'
+                    height='h-full'
                 ></NewsSlider>
             </div>
         </section>

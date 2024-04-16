@@ -7,7 +7,7 @@ export function usePositions() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const calcPositions = () => {
-        if (window.innerWidth <= 768 || !containerRef.current) return;
+        if (window.innerWidth < 768 || !containerRef.current) return;
         const containerRect = containerRef.current.getBoundingClientRect();
         const gapCol1 = (containerRect.height - 3 * 96) / 4;
         const gapCol2 = (containerRect.height - 2 * 96 - gapCol1) / 2;
