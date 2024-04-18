@@ -1,4 +1,3 @@
-'use client';
 import { Card, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from '@/front/shared/lib/utils';
 import { forwardRef } from 'react';

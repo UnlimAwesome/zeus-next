@@ -21,6 +21,7 @@ export default function RootLayout({
     return (
         <html
             lang='ru'
+            suppressHydrationWarning
             // className='h-svh'
         >
             <body className={inter.className + ' h-full w-full'}>

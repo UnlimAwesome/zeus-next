@@ -1,4 +1,3 @@
-'use client';
 import { cn } from '@/front/shared/lib/utils';
 import { useId } from 'react';
 

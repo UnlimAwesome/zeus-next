@@ -1,10 +1,10 @@
+import { signIn } from '@/auth/NextAuth';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/front/shared/lib/utils';
+import localFont from 'next/font/local';
 import Link from 'next/link';
 import { HTMLAttributes } from 'react';
-import localFont from 'next/font/local';
-import {} from 'next/font/google';
 
 const headerFont = localFont({
     src: './eurostyle-normal.woff2',
@@ -17,6 +17,7 @@ interface BarProps extends HTMLAttributes<HTMLElement> {
 
 export const Bar = (props: BarProps) => {
     const { className, ...otherProps } = props;
+
     return (
         <header
             className={cn(
@@ -48,12 +49,17 @@ export const Bar = (props: BarProps) => {
                 >
                     Регистрация
                 </Link>
-                <Link
-                    href='/'
-                    className='select-none'
-                >
-                    Войти
-                </Link>
+                <form>
+                    <button
+                        formAction={async () => {
+                            'use server';
+                            await signIn();
+                        }}
+                        className='select-none'
+                    >
+                        Войти
+                    </button>
+                </form>
             </div>
             <Separator className='absolute bottom-0 left-0 right-0' />
         </header>

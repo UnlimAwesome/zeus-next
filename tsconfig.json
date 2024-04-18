@@ -19,6 +19,7 @@
         ],
         "baseUrl": ".",
         "paths": {
+            "@/auth/*": ["./src/back/auth/*"],
             "@/components/*": ["./src/front/shared/components/*"],
             "@/features/*": ["./src/front/features/*"],
             "@/widgets/*": ["./src/front/widgets/*"],
