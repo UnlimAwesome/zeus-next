@@ -41,8 +41,8 @@ export const Bar = (props: BarProps) => {
                     Спасение утопающих - дело рук самих утопающих
                 </p>
             </div>
-            <ThemeSwitcher className='ml-auto mr-2 md:mr-4' />
-            <div className='flex h-full flex-col items-end justify-center text-white'>
+            {/* <ThemeSwitcher className='ml-auto mr-2 md:mr-4' /> */}
+            <div className='ml-auto flex h-full flex-col items-end justify-center text-white'>
                 <Link
                     href='/'
                     className='hidden select-none md:block'

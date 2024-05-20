@@ -26,7 +26,6 @@ class OAuthService {
 
     async signToken(secret: string, payload: Record<string, any>) {
         const encodedSecret = new TextEncoder().encode(secret);
-        const alg = 'HS256';
 
         const jwt = await new EncryptJWT(payload)
             .setProtectedHeader({
@@ -36,6 +35,8 @@ class OAuthService {
             .setIssuedAt()
             .setExpirationTime('10m')
             .encrypt(encodedSecret);
+
+        return jwt;
     }
 
     async handleOAuthRequest(req: NextRequest, res: NextResponse) {
