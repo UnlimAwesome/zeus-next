@@ -10,7 +10,7 @@ export function usePositions() {
         if (window.innerWidth < 768 || !containerRef.current) return;
         const containerRect = containerRef.current.getBoundingClientRect();
         const gapCol1 = (containerRect.height - 3 * 96) / 4;
-        const gapCol2 = (containerRect.height - 2 * 96 - gapCol1) / 2;
+        const gapCol2 = (containerRect.height - 4 * 96) / 3;
         const gapRow = (containerRect.width - 2 * 96) / 3;
 
         return [
@@ -18,8 +18,10 @@ export function usePositions() {
             { top: 2 * gapCol1 + 96, left: gapRow },
             { top: 3 * gapCol1 + 2 * 96, left: gapRow },
 
-            { top: gapCol2, left: 2 * gapRow + 96 },
-            { top: gapCol2 + 96 + gapCol1, left: 2 * gapRow + 96 },
+            { top: 0, left: 2 * gapRow + 96 },
+            { top: gapCol2 + 96, left: 2 * gapRow + 96 },
+            { top: 2 * (gapCol2 + 96), left: 2 * gapRow + 96 },
+            { top: 3 * (gapCol2 + 96), left: 2 * gapRow + 96 },
         ];
     };
 

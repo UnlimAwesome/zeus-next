@@ -1,6 +1,8 @@
+'use client';
 import { Card, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from '@/front/shared/lib/utils';
 import { forwardRef } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 interface DescriptionProps {
     className?: string;
@@ -24,11 +26,17 @@ export const Description = forwardRef<HTMLDivElement, DescriptionProps>(
                 <CardContent className='size-full p-2'>
                     <CardDescription
                         className={cn(
-                            'flex size-full items-center justify-center text-center text-2xl text-white',
+                            'flex size-full items-center justify-center text-center text-lg text-white md:text-2xl',
                             fontSize,
                         )}
                     >
-                        {text}
+                        <TypeAnimation
+                            sequence={[text]}
+                            speed={89}
+                            cursor={false}
+                            wrapper='span'
+                            style={{ height: 'max-content' }}
+                        />
                     </CardDescription>
                 </CardContent>
             </Card>

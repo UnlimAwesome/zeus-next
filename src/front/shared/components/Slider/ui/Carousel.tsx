@@ -70,7 +70,9 @@ export const Carousel = (props: SwiperProps) => {
             opts={{ slidesToScroll: 1, align: 'start' }}
             {...otherProps}
         >
-            <CarouselContent className={cn('size-full', `md:-ml-[${gap}px]`)}>
+            <CarouselContent
+                className={cn('size-full', `md:-ml-[${gap || 2}px]`)}
+            >
                 {children.map((child, index) => (
                     <CarouselItem
                         key={index}
@@ -78,7 +80,7 @@ export const Carousel = (props: SwiperProps) => {
                             'select-none',
                             carouselItemClassName,
                             height,
-                            `md:pl-[${gap}px]`,
+                            `md:pl-[${gap || 2}px]`,
                         )}
                     >
                         {child}

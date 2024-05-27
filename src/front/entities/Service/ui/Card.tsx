@@ -39,10 +39,10 @@ export const Card = (props: CardProps) => {
                 className='h-2/3 w-full object-cover'
             />
             <CardContent className='h-1/3 min-h-min sm:max-xl:h-1/2'>
-                <CardTitle className='w-full text-center text-2xl font-medium md:text-4xl xl:text-6xl'>
+                <CardTitle className='w-full text-center text-2xl font-medium md:text-4xl xl:text-5xl'>
                     {title}
                 </CardTitle>
-                <CardDescription className='w-full text-center text-xl text-white md:text-3xl'>
+                <CardDescription className='w-full text-pretty text-center text-xl text-white md:text-3xl'>
                     {description}
                 </CardDescription>
             </CardContent>

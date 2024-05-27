@@ -9,8 +9,47 @@ import { Description } from './Description';
 import { DescriptionConnector } from './DescriptionConnector';
 import { IconConnector } from './IconConnector';
 import { IconsContainer } from './IconsContainer';
+import { TypeAnimation } from 'react-type-animation';
 
 const AnimationDuration = 400;
+
+const jobs = [
+    {
+        title: 'Обработка, анализ, эффективное представление информации, контента и знаний',
+        description:
+            'Мы создаем инструменты и приложения для эффективной обработки массивов данных, извлекая ценную информацию из разнообразных источников и преобразовывать ее в знания, которые помогают нашим клиентам достичь своих бизнес-целей.',
+    },
+    {
+        title: 'Облачные технологии и технологии виртуализации',
+        description:
+            'Наши специалисты имеют глубокие знания в области облачных технологий и виртуализации, что позволяет нам предлагать нашим клиентам гибкие и масштабируемые решения для хранения данных, развертывания приложений и оптимизации IT-инфраструктуры.',
+    },
+    {
+        title: 'Новые человеко-машинные интерфейсы и когнитивные технологии',
+        description:
+            'Мы разрабатываем инновационные человеко-машинные интерфейсы, которые позволяют пользователям взаимодействовать с системами более естественным и удобным способом. Кроме того, мы исследуем и применяем когнитивные технологии, такие как распознавание речи, обработка естественного языка и компьютерное зрение, для улучшения процессов принятия решений и повышения производительности.',
+    },
+    {
+        title: 'Алгоритмика и моделирование',
+        description:
+            'Наша команда специалистов создает и интегрирует математические модели в алгоритмы для решения широкого спектра задач, начиная от анализа данных до оптимизации производственных процессов. ',
+    },
+    {
+        title: 'Платформы информационной безопасности на основе технологии AI в интеграции с IoT и IIoT',
+        description:
+            'Мы создаем инновационные платформы информационной безопасности, интегрирующие технологии искусственного интеллекта (AI) с системами Интернета вещей (IoT) и промышленного Интернета вещей (IIoT), для обеспечения комплексной защиты информации и инфраструктуры.',
+    },
+    {
+        title: 'Интеллектуальные системы управления',
+        description:
+            'Мы стремимся к постоянному совершенствованию наших систем управления, внедряя новые технологии и методики, чтобы обеспечить нашим клиентам конкурентные преимущества и повысить их эффективность.',
+    },
+    {
+        title: 'Инсталляция систем "Умной среды обитания"',
+        description:
+            'Мы интегрируем удобное, безопасное и энергоэффективное пространство для жизни и работы наших клиентов, обеспечивая им максимальный комфорт и удовлетворение от использования технологий "Умной среды обитания".',
+    },
+];
 
 interface ViewProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
@@ -158,13 +197,20 @@ export const View = (props: ViewProps) => {
                         orientation={orientation}
                     >
                         <div className='size-full rounded-2xl bg-[hsl(var(--dark))]'>
-                            {activeJob}
+                            <p className='text-center text-xl font-medium text-white md:text-3xl'>
+                                <TypeAnimation
+                                    sequence={[jobs[activeJob].title]}
+                                    wrapper='span'
+                                    cursor={false}
+                                    style={{ height: 'max-content' }}
+                                />
+                            </p>
                         </div>
                     </Content>
                     {descriptionConnectionStart &&
                         descriptionConnectionDestination && (
                             <DescriptionConnector
-                                key={'desc' + activeJob}
+                                key={'desc-connector' + activeJob}
                                 from={descriptionConnectionStart}
                                 to={descriptionConnectionDestination}
                                 animationDuration={AnimationDuration}
@@ -172,8 +218,9 @@ export const View = (props: ViewProps) => {
                             />
                         )}
                     <Description
+                        key={'desc' + activeJob}
                         className='md:grow'
-                        text='Описание категории'
+                        text={jobs[activeJob].description}
                         ref={descriptionRef}
                     />
                 </div>

@@ -18,11 +18,19 @@ export const View = (props: ViewProps) => {
         >
             <div
                 className={cn(
-                    'flex h-full basis-2/5 items-center justify-center text-wrap rounded-2xl',
+                    'flex h-full basis-2/5 items-center justify-center text-wrap rounded-2xl p-4',
                     ' bg-[var(--dark-opacity)] text-center text-2xl font-medium text-white md:text-3xl',
                 )}
             >
-                <p>Краткая информация о компании: цель, деятельность</p>
+                <p className='text-pretty text-center text-xl md:text-3xl'>
+                    ТОПРУС – команда опытных специалистов, основной целью
+                    которой является разработка инновационных программных
+                    решений для улучшения бизнес-процессов и повышения их
+                    эффективности. В основе наших разработок лежат технологии
+                    искусственного интеллекта (AI), применяемые для реализации
+                    систем технической безопасности, интернета вещей (IoT) и
+                    промышленного интернета вещей (IIoT).
+                </p>
             </div>
 
             <ServiceSlider
