@@ -1,4 +1,4 @@
-export interface OAuthClient {
+export interface Client {
     id: string;
     domain: string;
     name: string;

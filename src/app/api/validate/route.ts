@@ -2,5 +2,5 @@ import { authController } from '@/auth/Auth/controller';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
-    return await authController.token(req, res);
+    return await authController.validate(req, res);
 };

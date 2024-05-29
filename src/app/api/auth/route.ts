@@ -1,8 +1,6 @@
-import { oAuthService } from '@/auth/OAuthService';
+import { authController } from '@/auth/Auth/controller';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
-    return await oAuthService.handleOAuthRequest(req, res);
+    return await authController.authorize(req, res);
 };
-
-export const POST = (req: NextRequest, res: NextResponse) => {};
