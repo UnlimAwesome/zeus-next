@@ -7,7 +7,7 @@ export class UserService {
         this.userRepository = userRepository;
     }
     async getUserById(id: string) {
-        return this.userRepository.findById(id);
+        return (await this.userRepository.findById(id)) || null;
     }
     async validateUserCredentials(email: string, password: string) {
         const user = await this.userRepository.findByEmail(email);

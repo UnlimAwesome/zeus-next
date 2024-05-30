@@ -1,6 +1,7 @@
-import { EncryptJWT } from 'jose';
-import { TokenRepository } from './repository';
 import { userService } from '@/auth/User/service';
+import { EncryptJWT, SignJWT, base64url } from 'jose';
+import { TokenRepository } from './repository';
+import { randomBytes } from 'crypto';
 
 export class TokenService {
     private readonly tokenRepository: TokenRepository;
@@ -29,18 +30,17 @@ export class TokenService {
         const userData = await userService.getUserById(userId);
         const payload = { userId: userData!.id, role: userData!.role };
         const encodedSecret = new TextEncoder().encode(secret);
-        const jwt = await new EncryptJWT(payload)
+        const jwt = await new SignJWT(payload)
             .setProtectedHeader({
-                alg: 'dir',
-                enc: 'A128CBC-HS256',
+                alg: 'HS256',
             })
             .setIssuedAt()
-            .setExpirationTime('10m')
+            .setExpirationTime('2h')
             .setIssuer('zeus')
-            .encrypt(encodedSecret);
+            .sign(encodedSecret);
 
         const expiresAt = new Date();
-        expiresAt.setMinutes(expiresAt.getMinutes() + 10);
+        expiresAt.setMinutes(expiresAt.getHours() + 2);
         await this.tokenRepository.saveToken(clientId, userId, jwt, expiresAt);
 
         return jwt;

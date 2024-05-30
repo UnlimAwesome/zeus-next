@@ -1,17 +1,13 @@
 import { ClientRepository, clientRepository } from '@/auth/Client/repository';
 import { TokenService } from '@/auth/Token/service';
-import { UserRepository, userRepository } from '@/auth/User/repository';
 import { randomBytes } from 'crypto';
-import { EncryptJWT } from 'jose';
 
 export class AuthService {
     private readonly clientRepository: ClientRepository;
-    private readonly userRepository: UserRepository;
     private readonly tokenService: TokenService;
 
     constructor() {
         this.clientRepository = clientRepository;
-        this.userRepository = userRepository;
         this.tokenService = new TokenService();
     }
 
@@ -59,7 +55,7 @@ export class AuthService {
         return jwt;
     }
 
-    validateToken(token: string) {
-        return this.tokenService.isTokenValid(token);
+    async validateToken(token: string) {
+        return await this.tokenService.isTokenValid(token);
     }
 }

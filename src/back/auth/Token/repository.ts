@@ -39,14 +39,17 @@ export class TokenRepository {
         token: string,
         expiresAt: Date,
     ) {
-        const authData = authDataMock.find(
+        const authDataIndex = authDataMock.findIndex(
             (authData) =>
                 authData.clientId === clientId && authData.userId === userId,
         )!;
-        authData.accessToken = token;
-        authData.accessTokenExpiresAt = expiresAt;
+        authDataMock[authDataIndex] = {
+            ...authDataMock[authDataIndex],
+            accessToken: token,
+            accessTokenExpiresAt: expiresAt,
+        };
 
-        return authData;
+        return authDataMock[authDataIndex];
     }
 
     async findToken(token: string) {
