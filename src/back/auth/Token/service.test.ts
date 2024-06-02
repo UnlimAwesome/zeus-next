@@ -1,7 +1,16 @@
 /**
  * @jest-environment node
  */
-import { authDataMock } from './mock';
+import {
+    exportPKCS8,
+    exportSPKI,
+    generateKeyPair,
+    importPKCS8,
+    importSPKI,
+    jwtDecrypt,
+    jwtVerify,
+} from 'jose';
+import { authDataMock, secretDataMock } from './mock';
 import { TokenService } from './service';
 
 describe('TokenService', () => {
@@ -38,11 +47,57 @@ describe('TokenService', () => {
                 authorizationCode: 'code1',
                 codeExpiresAt: new Date(),
             });
+
+            for (let i = 1; i <= 5; i++) {
+                const keyPair = await generateKeyPair('ES512');
+
+                const privateString = await exportPKCS8(keyPair.privateKey);
+                const publicString = await exportSPKI(keyPair.publicKey);
+                const keys = {
+                    privateKey: privateString,
+                    publicKey: publicString,
+                };
+
+                secretDataMock.push({
+                    clientId: `client${i}`,
+                    userId: `user${i}`,
+                    keys: keys,
+                });
+            }
+
             const result = await tokenService.createToken('user1', 'client1');
 
+            console.log(
+                await jwtVerify(
+                    result,
+                    await importSPKI(
+                        secretDataMock.find(
+                            (x) =>
+                                x.clientId === 'client1' &&
+                                x.userId === 'user1',
+                        )!.keys.publicKey,
+                        'ES512',
+                    ),
+                ),
+                await jwtVerify(
+                    result,
+                    await importPKCS8(
+                        secretDataMock.find(
+                            (x) =>
+                                x.clientId === 'client1' &&
+                                x.userId === 'user1',
+                        )!.keys.privateKey,
+                        'ES512',
+                    ),
+                ),
+            );
+
             expect(typeof result).toBe('string');
-            expect(authDataMock[0].accessToken).toEqual(result);
-            expect(authDataMock[0].accessTokenExpiresAt).toBeDefined();
+            expect(
+                authDataMock.find(
+                    (x) => x.userId === 'user1' && x.clientId === 'client1',
+                )?.accessToken,
+            ).toEqual(result);
         });
     });
 

@@ -9,6 +9,6 @@ export interface AuthData {
 
 export interface SecretData {
     clientId: string;
-    secret: string;
+    keys: { privateKey: string; publicKey: string };
     userId: string;
 }

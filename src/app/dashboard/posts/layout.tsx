@@ -1,5 +1,7 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import {
     Menubar,
     MenubarContent,
@@ -7,6 +9,7 @@ import {
     MenubarMenu,
     MenubarTrigger,
 } from '@/components/ui/menubar';
+import { NewPostForm } from '@/features/Post';
 
 export default function PostsLayout({
     children,
@@ -19,7 +22,18 @@ export default function PostsLayout({
                 <MenubarMenu>
                     <MenubarTrigger>Создать</MenubarTrigger>
                     <MenubarContent>
-                        <MenubarItem>Продвижение компании</MenubarItem>
+                        <Dialog modal>
+                            <DialogTrigger>
+                                <MenubarItem
+                                    onSelect={(e) => {
+                                        e.preventDefault();
+                                    }}
+                                >
+                                    <span>Продвижение компании</span>
+                                </MenubarItem>
+                            </DialogTrigger>
+                            <NewPostForm type='Продвижение компании' />
+                        </Dialog>
                         <MenubarItem>Для пользователей</MenubarItem>
                     </MenubarContent>
                 </MenubarMenu>

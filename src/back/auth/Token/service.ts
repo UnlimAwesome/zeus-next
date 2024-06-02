@@ -1,7 +1,15 @@
 import { userService } from '@/auth/User/service';
-import { EncryptJWT, SignJWT, base64url } from 'jose';
+import {
+    EncryptJWT,
+    SignJWT,
+    base64url,
+    generateKeyPair,
+    importPKCS8,
+    importSPKI,
+} from 'jose';
 import { TokenRepository } from './repository';
-import { randomBytes } from 'crypto';
+import { privateEncrypt, randomBytes } from 'crypto';
+import { secretDataMock } from '@/auth/Token/mock';
 
 export class TokenService {
     private readonly tokenRepository: TokenRepository;
@@ -25,24 +33,37 @@ export class TokenService {
     }
 
     async createToken(userId: string, clientId: string) {
-        const secret = await this.tokenRepository.getSecret(clientId, userId);
+        // const secret = await this.tokenRepository.getSecret(clientId, userId);
 
         const userData = await userService.getUserById(userId);
         const payload = { userId: userData!.id, role: userData!.role };
-        const encodedSecret = new TextEncoder().encode(secret);
-        const jwt = await new SignJWT(payload)
-            .setProtectedHeader({
-                alg: 'HS256',
-            })
-            .setIssuedAt()
-            .setExpirationTime('2h')
-            .setIssuer('zeus')
-            .sign(encodedSecret);
+        // // const encodedSecret = new TextEncoder().encode(secret);
+        // const encodedSecret = new TextEncoder().encode(secret);
+        // const jwt = await new SignJWT(payload)
+        //     .setProtectedHeader({
+        //         alg: 'ES512',
+        //     })
+        //     .setIssuedAt()
+        //     .setExpirationTime('2h')
+        //     .setIssuer('zeus')
+        //     .sign(encodedSecret);
 
         const expiresAt = new Date();
         expiresAt.setMinutes(expiresAt.getHours() + 2);
-        await this.tokenRepository.saveToken(clientId, userId, jwt, expiresAt);
 
+        const { privateKey, publicKey } = secretDataMock.find(
+            (data) => data.clientId === clientId && data.userId === userId,
+        )!.keys;
+
+        const jwt = await new SignJWT(payload)
+            .setProtectedHeader({
+                alg: 'ES512',
+            })
+            .setIssuedAt()
+            .setExpirationTime('2h')
+            .sign(await importPKCS8(privateKey, 'ES512'));
+
+        await this.tokenRepository.saveToken(clientId, userId, jwt, expiresAt);
         return jwt;
     }
 

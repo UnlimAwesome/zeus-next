@@ -26,12 +26,12 @@ describe('TokenRepository', () => {
         });
     });
 
-    describe('getSecret', () => {
-        it('should return secret when clientId and userId are valid', async () => {
-            const secret = await tokenRepository.getSecret('client1', 'user1');
-            expect(typeof secret).toBe('string');
-        });
-    });
+    // describe('getSecret', () => {
+    //     it('should return secret when clientId and userId are valid', async () => {
+    //         const secret = await tokenRepository.getSecret('client1', 'user1');
+    //         expect(typeof secret).toBe('string');
+    //     });
+    // });
 
     describe('saveAuthCode', () => {
         it('should save authData and return it', async () => {

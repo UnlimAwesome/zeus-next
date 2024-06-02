@@ -63,7 +63,7 @@ export const Container = (props: IIconsContainerProps) => {
     return (
         <div
             ref={containerRef}
-            className='flex h-min w-full justify-between md:relative md:h-full md:w-auto md:flex-col md:items-center md:gap-4'
+            className='flex h-min w-full cursor-pointer justify-between md:relative md:h-full md:w-auto md:flex-col md:items-center md:gap-4'
             {...otherProps}
         >
             {icons.map((icon, i) => (

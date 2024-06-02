@@ -8,13 +8,13 @@ export class TokenRepository {
                 authData.authorizationCode === code,
         );
     }
-    async getSecret(clientId: string, userId: string) {
-        return secretDataMock.find(
-            (secretData) =>
-                secretData.clientId === clientId &&
-                secretData.userId === userId,
-        )!.secret;
-    }
+    // async getSecret(clientId: string, userId: string) {
+    //     return secretDataMock.find(
+    //         (secretData) =>
+    //             secretData.clientId === clientId &&
+    //             secretData.userId === userId,
+    //     )!.secret;
+    // }
 
     async saveAuthCode(
         userId: string,
