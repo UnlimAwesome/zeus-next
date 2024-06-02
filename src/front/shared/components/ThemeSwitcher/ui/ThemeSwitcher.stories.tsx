@@ -38,8 +38,6 @@ export const Primary: Story = {
     args: {},
     play: async ({ args, step, canvasElement }) => {
         const canvas = within(canvasElement);
-        console.log(canvasElement);
-        console.log(canvas.queryByTestId('theme-switcher'));
         await step('switch theme to dark', async () => {
             (await canvas.findByTestId('theme-switcher')).click();
         });

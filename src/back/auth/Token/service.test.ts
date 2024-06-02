@@ -67,31 +67,6 @@ describe('TokenService', () => {
 
             const result = await tokenService.createToken('user1', 'client1');
 
-            console.log(
-                await jwtVerify(
-                    result,
-                    await importSPKI(
-                        secretDataMock.find(
-                            (x) =>
-                                x.clientId === 'client1' &&
-                                x.userId === 'user1',
-                        )!.keys.publicKey,
-                        'ES512',
-                    ),
-                ),
-                await jwtVerify(
-                    result,
-                    await importPKCS8(
-                        secretDataMock.find(
-                            (x) =>
-                                x.clientId === 'client1' &&
-                                x.userId === 'user1',
-                        )!.keys.privateKey,
-                        'ES512',
-                    ),
-                ),
-            );
-
             expect(typeof result).toBe('string');
             expect(
                 authDataMock.find(

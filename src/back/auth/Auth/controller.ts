@@ -94,14 +94,12 @@ class AuthController {
         if (searchParams.has('state')) {
             redirectParams.set('state', searchParams.get('state')!);
         }
-        console.log(redirectParams.toString());
 
         const redirectUri =
             (searchParams.get('redirect_uri') || client.redirectUris[0]) +
             '?' +
             redirectParams.toString();
 
-        console.log(redirectUri);
         return NextResponse.redirect(redirectUri);
     }
 

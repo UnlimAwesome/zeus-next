@@ -4,6 +4,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogFooter,
+    DialogClose,
 } from '@/components/ui/dialog';
 import {
     FormControl,
@@ -21,10 +22,11 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { PostType } from '@/back/Dashboard/Post/model';
 
 interface formProps {
     className?: string;
-    type: 'Продвижение компании' | 'Для наших пользователей';
+    type: PostType;
 }
 
 const formSchema = z.object({
@@ -54,6 +56,12 @@ export const Form = (props: formProps) => {
             </DialogHeader>
             <FormPrimitive {...form}>
                 <form action={createPost}>
+                    <input
+                        name='type'
+                        className='hidden'
+                        value={type}
+                        readOnly
+                    />
                     <FormField
                         control={form.control}
                         name='title'
@@ -81,15 +89,17 @@ export const Form = (props: formProps) => {
                         )}
                     />
                     <DialogFooter>
-                        <Button
-                            type='submit'
-                            disabled={
-                                !form.formState.isValid ||
-                                !form.formState.isDirty
-                            }
-                        >
-                            Создать
-                        </Button>
+                        <DialogClose asChild>
+                            <Button
+                                type='submit'
+                                disabled={
+                                    !form.formState.isValid ||
+                                    !form.formState.isDirty
+                                }
+                            >
+                                Создать
+                            </Button>
+                        </DialogClose>
                     </DialogFooter>
                 </form>
             </FormPrimitive>

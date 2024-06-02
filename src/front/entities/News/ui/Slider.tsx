@@ -1,16 +1,18 @@
+import { PostData } from '@/back/Dashboard/Post/model';
 import { Slider as SliderPrimitive } from '@/components/Slider';
-import { Card as NewsCard } from './Card';
 import { cn } from '@/utils';
 import { ClassValue } from 'clsx';
+import { Card as NewsCard } from './Card';
 
 interface SliderProps {
     className?: string;
     height?: ClassValue;
     width?: string;
+    posts: PostData[];
 }
 
-export const Slider = (props: SliderProps) => {
-    const { className, height, width, ...otherProps } = props;
+export const Slider = async (props: SliderProps) => {
+    const { className, height, posts, width, ...otherProps } = props;
     return (
         <SliderPrimitive
             className={cn(className)}
@@ -19,26 +21,14 @@ export const Slider = (props: SliderProps) => {
             autoplayDelay={6000}
             height={height}
         >
-            <NewsCard
-                className={height}
-                title='Продвижение компании'
-                description='В этом блоке будут отображаться общие новости компании такие как разработка и внедрение нового оборудования, взаимодействие с другими организациями и т.д.'
-            ></NewsCard>
-            <NewsCard
-                className={height}
-                title='Продвижение компании'
-                description='В этом блоке будут отображаться общие новости компании такие как разработка и внедрение нового оборудования, взаимодействие с другими организациями и т.д.'
-            ></NewsCard>
-            <NewsCard
-                className={height}
-                title='Продвижение компании'
-                description='В этом блоке будут отображаться общие новости компании такие как разработка и внедрение нового оборудования, взаимодействие с другими организациями и т.д.'
-            ></NewsCard>
-            <NewsCard
-                className={height}
-                title='Продвижение компании'
-                description='В этом блоке будут отображаться общие новости компании такие как разработка и внедрение нового оборудования, взаимодействие с другими организациями и т.д.'
-            ></NewsCard>
+            {posts.map((post) => (
+                <NewsCard
+                    key={post.id}
+                    className={height}
+                    title={post.title + ' ' + post.id}
+                    description={post.description}
+                ></NewsCard>
+            ))}
         </SliderPrimitive>
     );
 };

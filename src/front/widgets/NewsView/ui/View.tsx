@@ -2,14 +2,16 @@ import { SectionHeader } from '@/components/SectionHeader';
 import { Separator } from '@/components/ui/separator';
 import { NewsSlider } from '@/entities/News';
 import { cn } from '@/front/shared/lib/utils';
+import { getPosts } from '../api/getPosts';
 import { HTMLAttributes } from 'react';
 
 interface ViewProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
 }
 
-export const View = (props: ViewProps) => {
+export const View = async (props: ViewProps) => {
     const { className, ...otherProps } = props;
+    const posts = await getPosts();
     return (
         <section
             className={cn(
@@ -29,6 +31,9 @@ export const View = (props: ViewProps) => {
                 <NewsSlider
                     className='-mr-4 h-4/5 w-full shrink grow-0 md:h-full md:w-[45%] md:basis-1/2'
                     height='h-full'
+                    posts={posts.filter(
+                        (post) => post.type === 'Продвижение компании',
+                    )}
                 ></NewsSlider>
                 <Separator
                     orientation='vertical'
@@ -37,6 +42,9 @@ export const View = (props: ViewProps) => {
                 <NewsSlider
                     className='h-4/5 w-full shrink grow-0 md:h-full md:w-[45%] md:basis-1/2'
                     height='h-full'
+                    posts={posts.filter(
+                        (post) => post.type === 'Для наших пользователей',
+                    )}
                 ></NewsSlider>
             </div>
         </section>
